@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { formatDateCompact, postHref, sortedPosts } from '../content/posts';
+import { useLocale } from '../i18n/LocaleContext';
+import { formatDateCompact, localize, postHref, sortedPosts } from '../content/posts';
 
 export function Home() {
+  const { locale, t } = useLocale();
   const recent = sortedPosts().slice(0, 4);
 
   return (
@@ -13,25 +15,23 @@ export function Home() {
             <span>aumriamott.co</span>
           </div>
           <h1 className="hero-title">
-            Poems,
+            {t.home.heroLine1}
             <br />
-            essays,
+            {t.home.heroLine2}
             <br />
-            <span className="accent">notes to self</span>
+            <span className="accent">{t.home.heroAccent}</span>
           </h1>
         </div>
       </section>
 
       <section className="intro">
         <div className="wrap">
-          <p className="intro-text">
-            Sporadic inspiration, journaling nights and recurring ideas.
-          </p>
+          <p className="intro-text">{t.home.intro}</p>
           <div className="intro-links">
             <Link to="/writing" className="active">
-              writing
+              {t.home.writing}
             </Link>
-            <a href="mailto:aumri.amott@gmail.com">contact</a>
+            <a href="mailto:aumri.amott@gmail.com">{t.home.contact}</a>
           </div>
         </div>
       </section>
@@ -39,16 +39,16 @@ export function Home() {
       <section>
         <div className="section-bar">
           <div className="wrap">
-            <span>Recent writing</span>
-            <Link to="/writing">all writing →</Link>
+            <span>{t.home.recentWriting}</span>
+            <Link to="/writing">{t.home.allWriting}</Link>
           </div>
         </div>
         <div className="post-list">
           {recent.map((post) => (
             <Link key={post.slug} to={postHref(post)} className="post-row">
               <span className="post-date">{formatDateCompact(post.date)}</span>
-              <span className="post-title">{post.title}</span>
-              <span className={`post-tag tag-${post.tag}`}>{post.tag}</span>
+              <span className="post-title">{localize(post.title, locale)}</span>
+              <span className={`post-tag tag-${post.tag}`}>{t.tags[post.tag]}</span>
             </Link>
           ))}
         </div>

@@ -78,9 +78,41 @@
   text-decoration: none;
 }
 
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .footer-links {
   display: flex;
   gap: 16px;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+}
+
+.lang-switch button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: 400 10px/1.6 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(22, 24, 26, 0.4);
+}
+
+.lang-switch button:hover {
+  color: rgba(22, 24, 26, 0.6);
+}
+
+.lang-switch button.active {
+  color: var(--graphite);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Home — hero */
@@ -325,26 +357,6 @@
 
 /* Reading pages — shared */
 
-.reading-topbar {
-  border-bottom: 1px solid var(--border);
-  padding: 13px 40px;
-}
-
-.reading-topbar .wrap {
-  display: flex;
-  justify-content: space-between;
-  font: 500 9.5px/1 var(--font-mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(22, 24, 26, 0.55);
-  padding: 0;
-}
-
-.reading-topbar a {
-  text-decoration: none;
-  color: inherit;
-}
-
 .reading-nav {
   border-top: 1px solid var(--border);
   background: var(--slab);
@@ -429,18 +441,6 @@
   min-height: calc(100vh - 58px);
   display: flex;
   flex-direction: column;
-}
-
-.poem-page .reading-topbar {
-  border-bottom: 1px solid rgba(231, 229, 221, 0.18);
-}
-
-.poem-page .reading-topbar .wrap {
-  color: rgba(231, 229, 221, 0.5);
-}
-
-.poem-page .reading-topbar .tag-poetry {
-  color: var(--lichen);
 }
 
 .poem-content {

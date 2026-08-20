@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useLocale } from '../i18n/LocaleContext';
 
 export function Header() {
+  const { t } = useLocale();
+
   return (
     <header className="site-header">
       <Link to="/" className="site-name">
         M. Hernandez
       </Link>
       <nav className="site-nav">
-        <Link to="/writing">writing</Link>
+        <Link to="/writing">{t.nav.writing}</Link>
       </nav>
     </header>
   );
