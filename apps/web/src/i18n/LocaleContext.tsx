@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { detectLocale, STORAGE_KEY } from './locale';
+import { detectLocale, getUrlLocale, STORAGE_KEY } from './locale';
 import type { Locale } from './locale';
 import { translations } from './translations';
 import type { Translations } from './translations';
@@ -19,7 +19,9 @@ function readStoredLocale(): Locale | null {
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => readStoredLocale() ?? detectLocale());
+  const [locale, setLocaleState] = useState<Locale>(
+    () => getUrlLocale() ?? readStoredLocale() ?? detectLocale(),
+  );
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -29,6 +31,17 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, next);
     setLocaleState(next);
   }
+
+  // Catches a ?lang= link followed while the app is already mounted
+  // (the initial useState above only runs once, on first load).
+  useEffect(() => {
+    function syncFromUrl() {
+      const urlLocale = getUrlLocale();
+      if (urlLocale) setLocale(urlLocale);
+    }
+    window.addEventListener('hashchange', syncFromUrl);
+    return () => window.removeEventListener('hashchange', syncFromUrl);
+  }, []);
 
   const value = useMemo(() => ({ locale, setLocale, t: translations[locale] }), [locale]);
 
