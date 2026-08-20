@@ -1,38 +1,30 @@
-import { posts } from './content/posts';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { ScrollToTop } from './components/ScrollToTop';
+import { EssayPost } from './pages/EssayPost';
+import { Home } from './pages/Home';
+import { PoemPost } from './pages/PoemPost';
+import { Writing } from './pages/Writing';
 import './App.css';
 
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
 function App() {
-  const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
-
   return (
-    <div className="page">
-      <header className="site-header">
-        <h1>Aumri Amott</h1>
-        <p className="tagline">Writing, published here.</p>
-      </header>
-
-      <main>
-        {sorted.map((post) => (
-          <article key={post.slug} className="post">
-            <h2>{post.title}</h2>
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
-            <p>{post.excerpt}</p>
-          </article>
-        ))}
-      </main>
-
-      <footer className="site-footer">
-        <p>aumriamott.co</p>
-      </footer>
-    </div>
+    <HashRouter>
+      <ScrollToTop />
+      <div className="app">
+        <Header />
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/writing" element={<Writing />} />
+            <Route path="/essay/:slug" element={<EssayPost />} />
+            <Route path="/poem/:slug" element={<PoemPost />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </HashRouter>
   );
 }
 
