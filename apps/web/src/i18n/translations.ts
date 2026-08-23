@@ -1,9 +1,10 @@
 import type { Locale } from './locale';
 import type { PostTag } from '../content/posts';
+import type { QuoteSourceType } from '../content/quotes';
 
 export const translations = {
   en: {
-    nav: { writing: 'writing' },
+    nav: { writing: 'writing', quotes: 'quotes' },
     home: {
       heroLine1: 'Poems,',
       heroLine2: 'essays,',
@@ -30,10 +31,20 @@ export const translations = {
       words: 'words',
       minRead: 'min read',
     },
+    quotes: {
+      eyebrow: 'Quotes',
+      titleLine1: 'Worth',
+      titleLine2: 'keeping',
+      source: 'source ↗',
+    },
+    sourceTypes: { podcast: 'podcast', book: 'book', other: 'other' } satisfies Record<
+      QuoteSourceType,
+      string
+    >,
     footer: { email: 'email' },
   },
   es: {
-    nav: { writing: 'escritos' },
+    nav: { writing: 'escritos', quotes: 'citas' },
     home: {
       heroLine1: 'Poemas,',
       heroLine2: 'ensayos,',
@@ -60,6 +71,16 @@ export const translations = {
       words: 'palabras',
       minRead: 'min de lectura',
     },
+    quotes: {
+      eyebrow: 'Citas',
+      titleLine1: 'Vale la pena',
+      titleLine2: 'guardarlas',
+      source: 'fuente ↗',
+    },
+    sourceTypes: { podcast: 'podcast', book: 'libro', other: 'otro' } satisfies Record<
+      QuoteSourceType,
+      string
+    >,
     footer: { email: 'correo' },
   },
 } satisfies Record<Locale, unknown>;

@@ -11,6 +11,7 @@ export function Header() {
       </Link>
       <nav className="site-nav">
         <Link to="/writing">{t.nav.writing}</Link>
+        <Link to="/quotes">{t.nav.quotes}</Link>
       </nav>
     </header>
   );

@@ -6,6 +6,7 @@ import { LocaleProvider } from './i18n/LocaleContext';
 import { EssayPost } from './pages/EssayPost';
 import { Home } from './pages/Home';
 import { PoemPost } from './pages/PoemPost';
+import { Quotes } from './pages/Quotes';
 import { Writing } from './pages/Writing';
 import './App.css';
 
@@ -20,6 +21,7 @@ function AppShell() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/writing" element={<Writing />} />
+          <Route path="/quotes" element={<Quotes />} />
           <Route path="/essay/:slug" element={<EssayPost />} />
           <Route path="/poem/:slug" element={<PoemPost />} />
         </Routes>

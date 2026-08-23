@@ -31,6 +31,7 @@ export function Home() {
             <Link to="/writing" className="active">
               {t.home.writing}
             </Link>
+            <Link to="/quotes">{t.nav.quotes}</Link>
             <a href="mailto:aumri.amott@gmail.com">{t.home.contact}</a>
           </div>
         </div>
