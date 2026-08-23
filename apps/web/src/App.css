@@ -1,43 +1,588 @@
-.page {
-  max-width: 640px;
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--plaster);
+}
+
+.wrap {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
+  padding: 0 40px;
 }
 
-.site-header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.25rem;
+/* Header */
+
+.site-header {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: var(--plaster);
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
-.tagline {
-  color: #666;
+.site-name {
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  font: 800 13px/1 var(--font-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+}
+
+.site-nav a {
+  font: 500 9.5px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  text-decoration: none;
+  padding: 19px 16px;
+  border-left: 1px solid var(--border);
+}
+
+.site-nav a:hover {
+  background: var(--slab);
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--slab);
+  padding: 22px 40px;
+  margin-top: auto;
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: space-between;
+  font: 400 10px/1.6 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(22, 24, 26, 0.6);
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+}
+
+.lang-switch button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: 400 10px/1.6 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(22, 24, 26, 0.4);
+}
+
+.lang-switch button:hover {
+  color: rgba(22, 24, 26, 0.6);
+}
+
+.lang-switch button.active {
+  color: var(--graphite);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Home — hero */
+
+.hero {
+  background: var(--graphite);
+  padding: 76px 40px 64px;
+}
+
+.hero .wrap {
+  padding: 0;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  font: 500 9.5px/1 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(231, 229, 221, 0.45);
+}
+
+.hero-title {
+  margin: 56px 0 0;
+  font: 900 clamp(48px, 9vw, 104px) / 0.92 var(--font-display);
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--plaster);
+}
+
+.hero-title .accent {
+  color: var(--lichen);
+}
+
+/* Home — intro */
+
+.intro {
+  padding: 36px 40px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.intro .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.intro-text {
+  margin: 0;
+  max-width: 520px;
+  font: 300 21px/1.55 var(--font-body);
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.intro-links {
+  display: flex;
+  gap: 20px;
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.intro-links a {
+  color: var(--graphite);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding-bottom: 4px;
+}
+
+.intro-links a.active {
+  color: var(--olive);
+  border-color: var(--olive);
+}
+
+/* Section bar (Recent writing / all writing) */
+
+.section-bar {
+  background: var(--slab);
+  padding: 11px 40px;
+}
+
+.section-bar .wrap {
+  display: flex;
+  justify-content: space-between;
+  font: 500 9.5px/1 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #33362f;
+  padding: 0;
+}
+
+.section-bar a {
+  color: #33362f;
+  text-decoration: none;
+}
+
+/* Post rows */
+
+.post-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.post-row {
+  display: grid;
+  grid-template-columns: 96px 1fr 84px;
+  gap: 20px;
+  align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-soft);
+  text-decoration: none;
+}
+
+.post-row:hover {
+  background: rgba(0, 0, 0, 0.035);
+}
+
+.post-list > .post-row:last-child {
+  border-bottom: none;
+}
+
+.post-date {
+  font: 400 10px/1.4 var(--font-mono);
+  color: rgba(22, 24, 26, 0.5);
+}
+
+.post-title {
+  font: 400 22px/1.3 var(--font-body);
+  color: var(--graphite);
+}
+
+.post-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-blurb {
+  margin-top: 6px;
+  font: 300 15px/1.5 var(--font-body);
+  color: rgba(51, 54, 47, 0.75);
+}
+
+.post-tag {
+  font: 500 9px/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.tag-essay {
+  color: var(--steel);
+}
+
+.tag-poetry {
+  color: var(--olive);
+}
+
+.tag-journal {
+  color: rgba(22, 24, 26, 0.55);
+}
+
+/* Writing index */
+
+.page-head {
+  padding: 56px 40px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-head .wrap {
+  padding: 0;
+}
+
+.eyebrow {
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+.page-title {
+  margin: 14px 0 0;
+  font: 900 clamp(34px, 5vw, 58px) / 0.98 var(--font-display);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 26px 0 0;
+}
+
+.chip {
+  cursor: pointer;
+  font: 500 9.5px/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 12px;
+  border-style: solid;
+  border-width: 1px;
+  background: transparent;
+  border-color: rgba(0, 0, 0, 0.25);
+  color: #33362f;
+}
+
+.chip.active {
+  color: var(--plaster);
+}
+
+.chip.active.chip-all {
+  background: var(--graphite);
+  border-color: var(--graphite);
+}
+
+.chip.active.chip-poetry {
+  background: var(--olive);
+  border-color: var(--olive);
+}
+
+.chip.active.chip-essay {
+  background: var(--steel);
+  border-color: var(--steel);
+}
+
+.chip.active.chip-journal {
+  background: #33362f;
+  border-color: #33362f;
+}
+
+.writing-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+}
+
+/* Quotes */
+
+.quotes-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+}
+
+.quote-card {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.quotes-list > .quote-card:last-child {
+  border-bottom: none;
+}
+
+.quote-text {
+  margin: 0;
+  padding: 8px 24px;
+  border-left: 3px solid transparent;
+  font: 400 italic clamp(19px, 2.4vw, 26px) / 1.5 var(--font-body);
+  color: #2a2c26;
+  background: transparent;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.quote-text.tone-podcast {
+  border-left-color: var(--steel);
+}
+
+.quote-text.tone-book {
+  border-left-color: var(--olive);
+}
+
+.quote-text.tone-other {
+  border-left-color: var(--slab);
+}
+
+.quote-text.tone-podcast:hover {
+  background: var(--steel);
+  color: #e4ebef;
+}
+
+.quote-text.tone-book:hover {
+  background: var(--olive);
+  color: #eef0e6;
+}
+
+.quote-text.tone-other:hover {
+  background: var(--slab);
+  color: #33362f;
+}
+
+.quote-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 14px;
+  font: 400 10px/1.4 var(--font-mono);
+  color: rgba(22, 24, 26, 0.55);
+}
+
+.quote-meta-right {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.quote-meta a {
+  color: var(--olive);
+  text-decoration: none;
+}
+
+.quote-source-tag {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font: 500 9px/1 var(--font-mono);
+}
+
+.quote-source-tag.tone-podcast {
+  color: var(--steel);
+}
+
+.quote-source-tag.tone-book {
+  color: var(--olive);
+}
+
+.quote-source-tag.tone-other {
+  color: rgba(22, 24, 26, 0.55);
+}
+
+/* Reading pages — shared */
+
+.reading-nav {
+  border-top: 1px solid var(--border);
+  background: var(--slab);
+}
+
+.reading-nav .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 40px;
+  font: 500 9.5px/1.4 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #33362f;
+  max-width: 1000px;
+}
+
+.reading-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Essay reading page */
+
+.essay-body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 52px 40px 20px;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 66ch);
+  gap: 44px;
+}
+
+.essay-meta {
+  font: 400 10px/1.9 var(--font-mono);
+  color: rgba(22, 24, 26, 0.5);
+}
+
+.essay-meta .tag-essay,
+.essay-meta .tag-journal {
+  color: var(--steel);
+}
+
+.essay-title {
+  font: 900 clamp(32px, 4.4vw, 54px) / 1.02 var(--font-display);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  text-wrap: balance;
+}
+
+.essay-rule {
+  width: 64px;
+  height: 2px;
+  background: var(--olive);
+  margin: 24px 0 26px;
+}
+
+.essay-body p {
+  margin: 22px 0 0;
+  font: 300 19.5px/1.7 var(--font-body);
+  color: #2a2c26;
+  text-wrap: pretty;
+}
+
+.essay-body p:first-of-type {
   margin-top: 0;
 }
 
-.post {
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid #e5e5e5;
+.essay-pull {
+  margin: 30px 0;
+  padding: 26px 28px;
+  background: var(--steel);
+  font: 400 italic 20px/1.5 var(--font-body);
+  color: #e4ebef;
 }
 
-.post:first-child {
-  border-top: none;
-  padding-top: 0;
+/* Poem reading page */
+
+.poem-page {
+  background: var(--steel);
+  min-height: calc(100vh - 58px);
+  display: flex;
+  flex-direction: column;
 }
 
-.post h2 {
-  margin-bottom: 0.25rem;
+.poem-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 40px;
 }
 
-.post time {
-  display: block;
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 0.75rem;
+.poem-date {
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lichen);
 }
 
-.site-footer {
-  margin-top: 4rem;
-  font-size: 0.85rem;
-  color: #999;
+.poem-title {
+  margin: 22px 0 0;
+  font: 800 clamp(26px, 3.4vw, 40px) / 1.08 var(--font-display);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--plaster);
+  text-align: center;
+}
+
+.poem-rule {
+  width: 48px;
+  height: 1px;
+  background: rgba(231, 229, 221, 0.35);
+  margin: 34px 0;
+}
+
+.poem-lines {
+  font: 300 clamp(20px, 2.2vw, 26px) / 2 var(--font-body);
+  color: #e2e6e4;
+  text-align: center;
+}
+
+.poem-page .reading-nav {
+  background: transparent;
+  border-top: 1px solid rgba(231, 229, 221, 0.18);
+}
+
+.poem-page .reading-nav .wrap {
+  color: rgba(231, 229, 221, 0.45);
 }
