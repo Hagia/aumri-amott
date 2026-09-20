@@ -119,7 +119,7 @@ export const posts: Post[] = [
         'Arréglala',
         '',
         'Saltarte tu hábito un día es fácil',
-        'Ser constante todo el año es un reto',
+        'Ser constante todo el año es retador',
         'Sé constante',
       ],
     },
