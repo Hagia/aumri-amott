@@ -69,6 +69,61 @@ export const posts: Post[] = [
       ],
     },
   },
+  {
+    slug: 'note-to-self',
+    title: { en: 'Note to Self', es: 'Nota para mí' },
+    date: '2026-09-19',
+    tag: 'poetry',
+    excerpt: { en: '', es: '' },
+    body: {
+      en: [
+        'Do it',
+        '',
+        'Buying food is easy',
+        'Making your own is difficult',
+        'Make your own',
+        '',
+        'Not waking up early is easy',
+        'Waking up at 5am every day is daunting',
+        'Wake up',
+        '',
+        'Not going to the gym is easy',
+        'Working out is exhausting',
+        'Go work out',
+        '',
+        'Complaining about life is easy',
+        'Fixing your life is painful',
+        'Fix it',
+        '',
+        'Skipping your habit for a day is easy',
+        'Being consistent all year long is challenging',
+        'Be consistent',
+      ],
+      es: [
+        'Hazlo',
+        '',
+        'Comprar comida es fácil',
+        'Prepararla tú mismo es difícil',
+        'Prepárala tú mismo',
+        '',
+        'No madrugar es fácil',
+        'Despertarse a las 5am todos los días es abrumador',
+        'Despierta',
+        '',
+        'No ir al gimnasio es fácil',
+        'Entrenar es agotador',
+        'Ve a entrenar',
+        '',
+        'Quejarte de la vida es fácil',
+        'Arreglar tu vida es doloroso',
+        'Arréglala',
+        '',
+        'Saltarte tu hábito un día es fácil',
+        'Ser constante todo el año es retador',
+        'Sé constante',
+      ],
+    },
+  },
 ];
 
 export function sortedPosts(): Post[] {
@@ -80,12 +135,7 @@ export function postHref(post: Post): string {
 }
 
 export function wordCount(post: Post, locale: Locale): number {
-  return post.body[locale]
-    .map(blockText)
-    .join(' ')
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean).length;
+  return post.body[locale].map(blockText).join(' ').trim().split(/\s+/).filter(Boolean).length;
 }
 
 export function readMinutes(post: Post, locale: Locale): number {
