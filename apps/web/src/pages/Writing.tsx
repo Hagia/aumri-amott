@@ -24,11 +24,7 @@ export function Writing() {
       <div className="page-head">
         <div className="wrap">
           <div className="eyebrow">{t.writing.eyebrow}</div>
-          <h1 className="page-title">
-            {t.writing.titleLine1}
-            <br />
-            {t.writing.titleLine2}
-          </h1>
+          <h1 className="page-title">{t.writing.title}</h1>
           <div className="chips">
             {CHIP_ORDER.map((chip) => {
               const count =

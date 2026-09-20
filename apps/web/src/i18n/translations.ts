@@ -17,8 +17,7 @@ export const translations = {
     },
     writing: {
       eyebrow: 'Writing',
-      titleLine1: 'Everything,',
-      titleLine2: 'newest first',
+      title: 'Everything…',
       all: 'all',
     },
     tags: { essay: 'essay', poetry: 'poetry', journal: 'journal' } satisfies Record<
@@ -57,8 +56,7 @@ export const translations = {
     },
     writing: {
       eyebrow: 'Escritos',
-      titleLine1: 'Todo,',
-      titleLine2: 'lo más reciente primero',
+      title: 'Todo…',
       all: 'todos',
     },
     tags: { essay: 'ensayo', poetry: 'poesía', journal: 'diario' } satisfies Record<
