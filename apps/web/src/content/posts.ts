@@ -70,10 +70,10 @@ export const posts: Post[] = [
     },
   },
   {
-    slug: 'note-to-self',
-    title: { en: 'Note to Self', es: 'Nota para mí' },
+    slug: 'do-it',
+    title: { en: 'Do it', es: 'Hazlo' },
     date: '2026-09-19',
-    tag: 'poetry',
+    tag: 'journal',
     excerpt: { en: '', es: '' },
     body: {
       en: [
