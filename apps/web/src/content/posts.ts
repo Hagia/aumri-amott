@@ -77,8 +77,6 @@ export const posts: Post[] = [
     excerpt: { en: '', es: '' },
     body: {
       en: [
-        'Do it',
-        '',
         'Buying food is easy',
         'Making your own is difficult',
         'Make your own',
@@ -100,8 +98,6 @@ export const posts: Post[] = [
         'Be consistent',
       ],
       es: [
-        'Hazlo',
-        '',
         'Comprar comida es fácil',
         'Prepararla tú mismo es difícil',
         'Prepárala tú mismo',
